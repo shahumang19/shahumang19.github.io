@@ -1,6 +1,0 @@
-docker startup command:
-docker run --rm --name slate -p 4567:4567 -v C:/Work/API-Documentation/source:/srv/slate/source slatedocs/slate serve
-
-
-docker build command:
-docker run --rm --name slate -v C:/Work/API-Documentation/build:/srv/slate/build -v C:/Work/API-Documentation/source:/srv/slate/source slatedocs/slate
