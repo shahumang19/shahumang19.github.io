@@ -1,0 +1,62 @@
+> To add a face use this code :
+
+```python
+import requests
+
+url = 'https://facial-api.globalvoxinc.com:8443/api/fr/v1/delete_face_mid'
+header = {"Content-Type":"application/json"}
+myobj = {
+            "key": "Your Project Key",
+            "mapping_id": "Your Mapping ID"
+        }
+x = requests.post(url, json = myobj, headers = header)
+```
+
+```javascript
+var url = "https://facial-api.globalvoxinc.com:8443/api/fr/v1/delete_face_mid";
+
+var data = JSON.stringify(
+    {
+        "key":"Your Project Key",
+        "mapping_id":"Your Mapping ID"});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", url);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+> Response Example
+
+```
+{
+    "code": 200,
+    "message": "Success",
+    "status": "OK"
+}
+```
+
+This endpoint deletes faces based on the provided `mapping_id`. It deletes group of faces which belong to specified `mapping_id`.
+
+### Request Information
+`POST - /api/fr/v1/delete_face_mid`
+
+### Headers
+|Key|Value|
+|-------|--------|
+|Content-type|application/json|
+
+### Requests parameters
+|Field|Type|Description|
+|-------|-------|--------|
+|key|string|Customer project authentication|
+|mapping_id|string|Mapping-id that groups faces provided at the time of face registration|

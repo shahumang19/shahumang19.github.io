@@ -1,0 +1,89 @@
+> To add a face use this code :
+
+```python
+import base64
+import requests
+
+url = 'https://facial-api.globalvoxinc.com:8443/api/fr/v1/add_face'
+header = {"Content-Type":"application/json"}
+
+with open("Your Image Path", "rb") as f:
+    img_str = base64.b64encode(f.read()).decode("utf-8")
+
+myobj = {
+            "key": "Your Project Key",
+            "first_name" : "John",
+            "last_name" : "Doe",
+            "mapping_id": "1",
+            "image_string" : img_str
+        }
+x = requests.post(url, json = myobj, headers=header)
+```
+
+```javascript
+var url = "https://facial-api.globalvoxinc.com:8443/api/fr/v1/add_face";
+
+var data = JSON.stringify(
+    {
+        "key":"Your Project Key",
+        "first_name":"John",
+        "last_name":"Doe",
+        "mapping_id":"1",
+        "check_similarity":0.5,
+        "image_string":"data:image/jpeg;base64,/9j/4AA..."
+    }
+);
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", url);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+> Response Example
+
+```
+{
+    "code": 200,
+    "data": {
+        "face-id": "84ecbe39-a146-46b9-ab1d-d9056639b9db"
+    },
+    "message": "Success",
+    "status": "OK"
+}
+```
+
+This endpoint adds a face to a project. It detects and adds the biggest face from the image. 
+
+Add more faces of a user from different angles to identify the user correctly from any angle accurately.
+
+<aside class="notice">
+The minimum height and width of the face should be 180px.
+</aside>
+
+### Request Information
+`POST - /api/fr/v1/add_face`
+
+### Headers
+|Key|Value|
+|-------|--------|
+|Content-type|application/json|
+
+### Requests parameters
+|Field|Type|Description|
+|-------|-------|--------|
+|key|string|Customer project authentication|
+|first_name|string|Firstname of the user|
+|last_name|string|Lastname of the user|
+|mapping_id| string |ID to group multiple faces of a single user. I.e., Group 3 faces of one user by giving same mapping id to all those faces. Can delete update multiple users using this id.|  
+|image_string| string (base64/url)| Base64/Url string of image containing face you want to register |
+|check_face_similarity (optional) |float(0-1)|Optional argument if provided the number will be used to check if a face with greater than that similarity exists or not and if it exists then it returns id of the highest similar face with code 202. If it doesn’t exist then adds the face to the database.| 

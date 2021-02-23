@@ -1,0 +1,90 @@
+> To add a face use this code :
+
+```python
+import requests
+
+url = 'https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_face_list_mid'
+header = {"Content-Type":"application/json"}
+myobj = {
+            "key": "Your Project Key",
+            "mapping_id": "(Optional) Your Mapping ID"
+            "img_flag":"(Optional) Flag for returning image"
+        }
+x = requests.post(url, json = myobj, headers=header)
+```
+
+```javascript
+var url = "https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_face_list_mid";
+
+var data = JSON.stringify(
+    {
+        "key":"Your Project Key",
+        "mapping_id":"(Optional) Your Mapping ID"
+        "img_flag":"(Optional) Flag for returning image"
+    }
+);
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", url);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+> Response Example
+
+```
+{
+    "code": 200,
+    "data": {
+        "mapped_list": [
+            {
+                "face_list": [
+                    {
+                        "_id": "84ecbe39-a146-4jub9-ab1d-d9082639fghj",
+                        "first_name": "Jhon",
+                        "img_url": null,
+                        "last_name": "Deo",
+                        "status": 1
+                    },
+                    {
+                        "_id": "84edfhwj9-a146-4jub9-abjud-d9082639f28uj",
+                        "first_name": "Jhon",
+                        "img_url": null,
+                        "last_name": "Deo",
+                        "status": 1
+                    }
+                ],
+                "mapping_id": "2"
+            }
+        ]
+    },
+    "message": "Success",
+    "status": "OK"
+}
+```
+
+This endpoint returns the list of faces registered in specified mapping id. If mapping id is not specified all faces data will be returned
+
+### Request Information
+`GET - /api/fr/v1/get_face_list_mid`
+
+### Headers
+|Key|Value|
+|-------|--------|
+|Content-type|application/json|
+
+### Requests parameters
+|Field|Type|Description|
+|-------|-------|--------|
+|key|string|Customer project authentication|
+|mapping_id (optional)| string |Mapping-id that groups faces provided at the time of face registration|  
+|img_flag (Optional)|boolean|Flag for returning image. e.g. img_flag = 1 will return image and 0 will not.

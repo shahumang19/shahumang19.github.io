@@ -1,0 +1,66 @@
+> To add a face use this code :
+
+```python
+import requests
+
+url = 'https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_face_count'
+header = {"Content-Type":"application/json"}
+myobj = {
+            "key": "Your Project Key"
+        }
+x = requests.post(url, json = myobj, headers=header)
+```
+
+```javascript
+var url ="https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_face_count";
+
+var data = JSON.stringify(
+    {
+        "key":"Your Project Key"
+    }
+);
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", url);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+> Response Example
+
+```
+{
+    "code": 200,
+    "data": {
+        "mapped_faces": 514,
+        "total_faces": 1207
+    },
+    "message": "Success",
+    "status": "OK"
+}
+```
+
+This endpoint returns the count of mapped faces and total faces. `mapped_faces` contains count of grouped faces and `total_faces` gives the count of all the faces registered by user.
+Example - if user A, B, C contains 3 photos each, than output will be `mapped_faces` - 3 and `total faces` - 9.
+
+### Request Information
+`GET - /api/fr/v1/get_face_count`
+
+### Headers
+|Key|Value|
+|-------|--------|
+|Content-type|application/json|
+
+### Requests parameters
+|Field|Type|Description|
+|-------|-------|--------|
+|key|string|Customer project authentication|

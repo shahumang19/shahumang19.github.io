@@ -1,0 +1,81 @@
+> To add a face use this code :
+
+```python
+import requests
+
+url = 'https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_face_list'
+header = {"Content-Type":"application/json"}
+myobj = {
+            "key": "Your Project Key"
+        }
+x = requests.post(url, json = myobj, headers=header)
+```
+
+```javascript
+var url = "https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_face_list";
+
+var data = JSON.stringify(
+    {
+        "key":"Your Project Key"
+    }
+);
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", url);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+> Response Example
+
+```
+{
+    "code": 200,
+    "data": {
+        "face_list": [
+            {
+                "_id": "36f67a6a-98zz-41e8-bf68-cfd077b4gc47",
+                "first_name": "john",
+                "img_url": null,
+                "last_name": "Doe",
+                "mapping_id": "5ddcdfd0e11esd83d871f884sdrj",
+                "status": 1
+            },
+            {
+                "_id": "e5199347-8f1f-45fg-88c7-bbzsa38b76046",
+                "first_name": "peter",
+                "img_url": "Image URL",
+                "last_name": "jhon",
+                "mapping_id": "44dcdfd0e11e1583d871f884sdrj",
+                "status": 1
+            }
+        ]
+    },
+    "message": "Success",
+    "status": "OK"
+}
+```
+
+This endpoint returns the list of faces registered.
+
+### Request Information
+`GET - /api/fr/v1/get_face_list`
+
+### Headers
+|Key|Value|
+|-------|--------|
+|Content-type|application/json|
+
+### Requests parameters
+|Field|Type|Description|
+|-------|-------|--------|
+|key|string|Customer project authentication|

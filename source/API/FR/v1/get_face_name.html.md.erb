@@ -1,0 +1,77 @@
+> To add a face use this code :
+
+```python
+import requests
+
+url = 'https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_face_by_name'
+header = {"Content-Type":"application/json"}
+myobj = {
+            "key": "Your Project Key",
+            "query": "String to search name"
+        }
+x = requests.post(url, json = myobj, headers=header)
+```
+
+```javascript
+var url = "https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_faces_by_name";
+
+var data = JSON.stringify(
+    {
+        "key":"FRDEMO12346",
+        "query":"di"
+    }
+);
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", url);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+> Response Example
+
+```
+{
+    "code": 200,
+    "data": [
+        {
+            "face_list": [
+                {
+                    "face_id": "359a736b-5a92-4dbe-fr58-b17dd29df24d",
+                    "first_name": "Jhon",
+                    "img_url": "Image URL",
+                    "last_name": "Deo"
+                }
+            ],
+            "mapping_id": "g0268b3b8f8b23dece0afds6dff5"
+        }
+    ],
+    "message": "Success",
+    "status": "OK"
+}
+```
+
+This endpoint returns the group of faces whose name comes under the query string. Example if query string is "jh" than all first name and last name containing "jh" will be returned. Result will be grouped by mapping_ids.
+ 
+### Request Information
+`GET - /api/fr/v1/get_face_by_name`
+
+### Headers
+|Key|Value|
+|-------|--------|
+|Content-type|application/json|
+
+### Requests parameters
+|Field|Type|Description|
+|-------|-------|--------|
+|key|string|Customer project authentication|
+|query|string|String to search name from face registered|
