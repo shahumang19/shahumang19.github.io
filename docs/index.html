@@ -386,7 +386,8 @@
             <span class="s">"first_name"</span> <span class="p">:</span> <span class="s">"John"</span><span class="p">,</span>
             <span class="s">"last_name"</span> <span class="p">:</span> <span class="s">"Doe"</span><span class="p">,</span>
             <span class="s">"mapping_id"</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
-            <span class="s">"image_string"</span> <span class="p">:</span> <span class="n">img_str</span>
+            <span class="s">"check_similarity"</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="c1"># Optional
+</span>            <span class="s">"image_string"</span> <span class="p">:</span> <span class="n">img_str</span>
         <span class="p">}</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span> <span class="o">=</span> <span class="n">myobj</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://facial-api.globalvoxinc.com:8443/api/fr/v1/add_face</span><span class="dl">"</span><span class="p">;</span>
@@ -1062,7 +1063,7 @@ The minimum height and width of the face should be 180px.
 <span class="n">header</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Content-Type"</span><span class="p">:</span><span class="s">"application/json"</span><span class="p">}</span>
 <span class="n">myobj</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s">"key"</span><span class="p">:</span> <span class="s">"Your Project Key"</span><span class="p">,</span>
-            <span class="s">"id_list"</span> <span class="p">:</span> <span class="p">[</span><span class="s">"List of your Face Ids"</span><span class="p">]</span>
+            <span class="s">"id_list"</span> <span class="p">:</span> <span class="p">[</span><span class="s">"ID1"</span><span class="p">,</span> <span class="s">"ID2"</span><span class="p">]</span>
         <span class="p">}</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span> <span class="o">=</span> <span class="n">myobj</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span> <span class="n">header</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://facial-api.globalvoxinc.com:8443/api/fr/v1/delete_face</span><span class="dl">"</span><span class="p">;</span>
@@ -1070,7 +1071,7 @@ The minimum height and width of the face should be 180px.
 <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Your Project Key</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">id_list</span><span class="dl">"</span><span class="p">:[</span><span class="dl">"</span><span class="s2">List of your Face Ids</span><span class="dl">"</span><span class="p">]</span>
+        <span class="dl">"</span><span class="s2">id_list</span><span class="dl">"</span><span class="p">:[</span><span class="dl">"</span><span class="s2">ID1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ID2</span><span class="dl">"</span><span class="p">]</span>
     <span class="p">}</span>
 <span class="p">);</span>
 
@@ -1346,17 +1347,17 @@ The minimum height and width of the face should be 180px.
 <span class="n">header</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Content-Type"</span><span class="p">:</span><span class="s">"application/json"</span><span class="p">}</span>
 <span class="n">myobj</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s">"key"</span><span class="p">:</span> <span class="s">"Your Project Key"</span><span class="p">,</span>
-            <span class="s">"mapping_id_list"</span><span class="p">:</span> <span class="s">"(Optional) List Of Your Mapping IDs"</span>
-            <span class="s">"img_flag"</span><span class="p">:</span><span class="s">"(Optional) Flag for returning image"</span>
-        <span class="p">}</span>
+            <span class="s">"mapping_id_list"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Mapping_ID1"</span><span class="p">,</span> <span class="s">"Mapping_ID2"</span><span class="p">],</span> <span class="c1"># Optional
+</span>            <span class="s">"img_flag"</span><span class="p">:</span><span class="s">" Flag for returning image"</span> <span class="c1"># Optional
+</span>        <span class="p">}</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span> <span class="o">=</span> <span class="n">myobj</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://facial-api.globalvoxinc.com:8443/api/fr/v1/get_face_list_mid</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Your Project Key</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">mapping_id_list</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">(Optional) List Of Your Mapping IDs</span><span class="dl">"</span>
-        <span class="dl">"</span><span class="s2">img_flag</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">(Optional) Flag for returning image</span><span class="dl">"</span>
+        <span class="dl">"</span><span class="s2">mapping_id_list</span><span class="dl">"</span><span class="p">:[</span><span class="dl">"</span><span class="s2">Mapping_ID1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Mapping_ID2</span><span class="dl">"</span><span class="p">],</span> <span class="err">#</span> <span class="nx">Optional</span>
+        <span class="dl">"</span><span class="s2">img_flag</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Flag for returning image</span><span class="dl">"</span> <span class="err">#</span> <span class="nx">Optional</span>
     <span class="p">}</span>
 <span class="p">);</span>
 
