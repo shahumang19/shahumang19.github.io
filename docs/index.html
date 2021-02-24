@@ -398,7 +398,7 @@
         <span class="dl">"</span><span class="s2">first_name</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">last_name</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Doe</span><span class="dl">"</span><span class="p">,</span>
         <span class="dl">"</span><span class="s2">mapping_id</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">check_similarity</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">check_similarity</span><span class="dl">"</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="c1">// Optional</span>
         <span class="dl">"</span><span class="s2">image_string</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">data:image/jpeg;base64,/9j/4AA...</span><span class="dl">"</span>
     <span class="p">}</span>
 <span class="p">);</span>
@@ -966,8 +966,8 @@ The minimum height and width of the face should be 180px.
 
 <span class="n">myobj</span> <span class="o">=</span> <span class="p">{</span>
           <span class="s">"key"</span><span class="p">:</span> <span class="s">"Your Project Key"</span><span class="p">,</span>
-          <span class="s">"id_list"</span> <span class="p">:</span> <span class="s">"List Of Face IDs"</span><span class="p">,</span>
-          <span class="s">"mapping_id"</span> <span class="p">:</span> <span class="s">"Face Group ID"</span>
+          <span class="s">"id_list"</span> <span class="p">:</span> <span class="p">[</span><span class="s">"ID1"</span><span class="p">,</span> <span class="s">"ID2"</span><span class="p">],</span>
+          <span class="s">"mapping_id"</span> <span class="p">:</span> <span class="s">"1"</span>
         <span class="p">}</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span> <span class="o">=</span> <span class="n">myobj</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://facial-api.globalvoxinc.com:8443/api/fr/v1/update_face_mid</span><span class="dl">"</span><span class="p">;</span>
@@ -975,8 +975,8 @@ The minimum height and width of the face should be 180px.
 <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
     <span class="p">{</span>
       <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Your Project Key</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">id_list</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">[List Of Face IDs]</span><span class="dl">"</span><span class="p">,</span>
-      <span class="dl">"</span><span class="s2">mapping_id</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">Face Group ID</span><span class="dl">"</span>
+      <span class="dl">"</span><span class="s2">id_list</span><span class="dl">"</span> <span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">ID1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ID2</span><span class="dl">"</span><span class="p">],</span>
+      <span class="dl">"</span><span class="s2">mapping_id</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span>
     <span class="p">}</span>
 <span class="p">);</span>
 
@@ -1356,7 +1356,7 @@ The minimum height and width of the face should be 180px.
 <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Your Project Key</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">mapping_id_list</span><span class="dl">"</span><span class="p">:[</span><span class="dl">"</span><span class="s2">Mapping_ID1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Mapping_ID2</span><span class="dl">"</span><span class="p">],</span> <span class="err">#</span> <span class="nx">Optional</span>
+        <span class="dl">"</span><span class="s2">mapping_id_list</span><span class="dl">"</span><span class="p">:[</span><span class="dl">"</span><span class="s2">Mapping_ID1</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Mapping_ID2</span><span class="dl">"</span><span class="p">],</span> <span class="c1">// Optional</span>
         <span class="dl">"</span><span class="s2">img_flag</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Flag for returning image</span><span class="dl">"</span> <span class="err">#</span> <span class="nx">Optional</span>
     <span class="p">}</span>
 <span class="p">);</span>
@@ -1665,8 +1665,8 @@ Example - if user A, B, C contains 3 photos each, than output will be <code>mapp
 
 <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
     <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">FRDEMO12346</span><span class="dl">"</span><span class="p">,</span>
-        <span class="dl">"</span><span class="s2">query</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">di</span><span class="dl">"</span>
+        <span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Your Project Key</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">query</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">String to search name</span><span class="dl">"</span>
     <span class="p">}</span>
 <span class="p">);</span>
 
